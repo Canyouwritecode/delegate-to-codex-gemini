@@ -13,7 +13,7 @@ Two Claude Code skills that split the work between three agents, to save Claude 
 
 The skills are not for architecture, unclear requirements, or debugging that needs judgment. Those stay with Claude.
 
-Saw the animated office on @pluggedwith.ai? That's a separate repo. For the whole setup, install these skills first, then [agent-board-animated](https://github.com/Canyouwritecode/agent-board-animated).
+Saw the animated office on [@pluggedwith.ai](https://www.instagram.com/pluggedwith.ai/) on Instagram? That's a separate repo. For the whole setup, install these skills first, then [agent-board-animated](https://github.com/Canyouwritecode/agent-board-animated).
 
 ## What you need
 
