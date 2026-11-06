@@ -13,6 +13,8 @@ Two Claude Code skills that split the work between three agents, to save Claude 
 
 The skills are not for architecture, unclear requirements, or debugging that needs judgment. Those stay with Claude.
 
+Saw the animated office on @pluggedwith.ai? That's a separate repo. For the whole setup, install these skills first, then [agent-board-animated](https://github.com/Canyouwritecode/agent-board-animated).
+
 ## What you need
 
 - [Claude Code](https://claude.com/claude-code)
@@ -64,6 +66,8 @@ Delegate the CSV export to Codex, then have Gemini review it.
 [Agent board animated](https://github.com/Canyouwritecode/agent-board-animated) is a separate Claude Code mod that shows these jobs as a small animated office. Running jobs sit at desks, idle agents wait in the coffee room, and every 10 finished jobs earn a pizza.
 
 ![The last job finishes, the office gets a pizza break, and the countdown resets](https://raw.githubusercontent.com/Canyouwritecode/agent-board-animated/main/media/pizza-break.gif)
+
+The office only draws in the VS Code extension. In a terminal you get a text list instead.
 
 It reads the same `.codex-tasks/` and `.agent-tasks/` folders, so it needs no setup with these skills:
 
