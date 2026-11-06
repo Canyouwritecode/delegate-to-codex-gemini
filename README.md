@@ -68,7 +68,8 @@ Delegate the CSV export to Codex, then have Gemini review it.
 It reads the same `.codex-tasks/` and `.agent-tasks/` folders, so it needs no setup with these skills:
 
 ```
-/plugin install agent-board-animated --marketplace Canyouwritecode/agent-board-animated
+claude plugin marketplace add https://github.com/Canyouwritecode/agent-board-animated.git
+claude plugin install agent-board-animated@agent-board-animated
 ```
 
 ## Keeping private files private
