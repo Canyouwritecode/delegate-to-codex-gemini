@@ -48,10 +48,14 @@ def main():
     result_path = pathlib.Path(f'{stem}.result.md')
     status_path = pathlib.Path(f'{stem}.status.txt')
 
+    # Status tools read an empty result file and an empty .log as a running job.
+    result_path.write_text('', encoding='utf-8')
+    pathlib.Path(f'{stem}.log').write_text('', encoding='utf-8')
+
     agy = shutil.which('agy') or 'agy'
     command = [agy, '-p', brief.read_text(encoding='utf-8'), '--mode', 'plan', '--sandbox', '--add-dir', '.',
                '--output-format', 'stream-json', '--effort', args.effort, '--print-timeout', f'{args.limit}s',
-               '--log-file', f'{stem}.log']
+               '--log-file', f'{stem}.agy-log.txt']
     if args.model:
         command += ['--model', args.model]
     if args.schema:
