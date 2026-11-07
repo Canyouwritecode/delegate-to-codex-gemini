@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["findings", "areas_with_no_problem", "files_read"],
+  "properties": {
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["file", "line", "problem", "example_input", "actual_output", "expected_output"],
+        "properties": {
+          "file": { "type": "string" },
+          "line": { "type": "integer" },
+          "problem": { "type": "string" },
+          "example_input": { "type": "string" },
+          "actual_output": { "type": "string" },
+          "expected_output": { "type": "string" }
+        }
+      }
+    },
+    "areas_with_no_problem": { "type": "array", "items": { "type": "string" } },
+    "files_read": { "type": "array", "items": { "type": "string" } }
+  }
+}

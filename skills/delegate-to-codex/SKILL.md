@@ -57,6 +57,8 @@ When it finishes, get the session id so the fix round resumes this exact session
 
 Read only `<task-name>.result.md`. Open the rest of the `.log` file only if the run failed or the result is empty.
 
+When Codex runs in another folder, such as a worktree or scratch folder, keep the brief, log and result in the project's `.codex-tasks/`, using full paths, so that any tool watching that folder still sees the run.
+
 ## 4. Review
 Inspect:
 - Run `git status` and `git diff --stat`, then read the diff for the changed files. Check for new untracked files too.
@@ -67,6 +69,7 @@ Inspect:
 Run:
 - Run the test command yourself, outside the sandbox, and don't trust Codex's report alone. Inside the sandbox some tools fail or need workarounds. Database and service tests usually run only on your side, so plan time for that.
 - Treat a reported "passed" as unverified, even for checks Codex says it ran.
+- An automatic gate must check the job's own acceptance cases, not only existing tests, and treat "I got stuck" as a failure. After two tool failures on one file, change the builder: a Claude agent can edit reliably and run the real suite.
 - For privacy or security rules, read the tests themselves. Each case should name the exact secret, not just check that the input changed. Keep the output of an adversarial probe run as a baseline for later changes.
 - For a server function or anything with runtime limits, also run it on the real runtime, repeatedly and from a cold start, and test each limit at its maximum. Use a local stand-in for a paid API. Count only rounds where the test setup itself worked.
 - If a test that existed before now fails, the brief may be what's wrong. Check that before asking Codex to change the code.

@@ -20,6 +20,7 @@ Saw the animated office on [@pluggedwith.ai](https://www.instagram.com/pluggedwi
 - [Claude Code](https://claude.com/claude-code)
 - The Codex CLI, signed in, for `delegate-to-codex`
 - The Antigravity CLI (`agy`), signed in, for `delegate-to-gemini`
+- Python 3, for `run-gemini.py`, the Gemini runner
 - A git repository with at least one commit, so every change can be reviewed as a diff
 
 Each skill works without the other, but they are better together: `delegate-to-codex` asks for a Gemini review when it finishes.
@@ -57,7 +58,7 @@ Delegate the CSV export to Codex, then have Gemini review it.
 
 1. Claude writes a brief that stands on its own, because the other agent sees none of your conversation.
 2. The brief goes into `.codex-tasks/` or `.agent-tasks/`. Both folders stay out of git through `.git/info/exclude`, so they never show up in your diff.
-3. The agent runs in the background and writes a log and a result file next to the brief.
+3. The agent runs in the background and writes a log and a result file next to the brief. Gemini runs through `run-gemini.py`, which streams every step to a file and stops a run that has gone silent. It defaults to low effort, because higher effort stalled on long reviews. Low effort finishes reliably but makes more mistakes, so every finding gets checked.
 4. Claude checks the work itself: it reads the diff, reruns the tests and verifies each review finding. A reported "passed" counts as unverified.
 5. If something is wrong, Codex gets at most two fix rounds. After that, Claude stops and tells you.
 

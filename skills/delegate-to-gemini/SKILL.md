@@ -36,7 +36,9 @@ Gemini has none of this conversation's context. A brief that works well for a co
 ## 3. Run it
 Run it in the background (Bash tool, `run_in_background: true`). `--mode plan` and `--sandbox` enforce read-only instead of relying on the brief, and `--print-timeout` stops a stuck run:
 
-    agy -p "$(cat .agent-tasks/<task>.md)" --mode plan --sandbox --add-dir . --print-timeout 900s > .agent-tasks/<task>.result.md 2> .agent-tasks/<task>.log
+    python ~/.claude/skills/delegate-to-gemini/run-gemini.py .agent-tasks/<task>.md --effort low --schema ~/.claude/skills/delegate-to-gemini/review-schema.json
+
+The runner keeps `--mode plan --sandbox`, streams every step to `<task>.stream.jsonl`, stops a silent run after `--idle` seconds, and writes `<task>.result.md` and `<task>.status.txt`. Default to `--effort low`: on a long code review, medium and high stalled in one silent thinking step, while low finished in about 30 seconds. Low effort produces more false findings, so run every finding. Leave out `--schema` for summaries. A stopped run can continue with `--resume <conversation id>` from the status file.
 
 Never add `--dangerously-skip-permissions`.
 
